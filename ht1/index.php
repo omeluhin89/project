@@ -6,14 +6,27 @@
 </head>
 <body>
 <form method="get" action="index.php">
-    Имя <input name="user_name" type="text" maxlength="25" size="20" value="имя" />
+    Имя <input name="user_name" type="text" maxlength="25" size="20" value="" />
     <br>
-    Возраст <input name="age" type="text" maxlength="2" size="3" value="возраст" />
+    <br>
+    Возраст <input name="age" type="text" maxlength="2" size="3" value="" />
+    <br>
     <br>
     <input type="submit" value="Передать">
 </form>
+<div class="main">
+<p>
+<?php
+
+if (!isset($_GET["user_name"]) || ($_GET["age"]))
+{
+    echo "Привет, {$_GET["user_name"]}! Тебе правда  {$_GET["age"]} лет";
+}
+
+?>
+</p></div>
+
+
 
 </body>
 </html>
-<?php
-echo $_GET["age"];
