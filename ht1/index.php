@@ -18,12 +18,13 @@
 <p>
 <?php
 
-if (!isset($_GET["user_name"]) || ($_GET["age"]))
+if (!empty($_GET["user_name"]) && !empty($_GET["age"]))
 {
     echo "Привет, {$_GET["user_name"]}! Тебе правда  {$_GET["age"]} лет";
 }
 
 ?>
+
 </p></div>
 
 
