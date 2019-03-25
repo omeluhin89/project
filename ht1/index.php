@@ -6,10 +6,10 @@
 </head>
 <body>
 <form method="get" action="index.php">
-    Имя <input name="user_name" type="text" maxlength="25" size="20" value="" />
+    Имя <input name="user_name" type="text" maxlength="25" size="20" value="<?=@$_GET["user_name"] ?>" />
     <br>
     <br>
-    Возраст <input name="age" type="text" maxlength="2" size="3" value="" />
+    Возраст <input name="age" type="text" maxlength="2" size="3" value="<?=@$_GET["age"] ?>" />
     <br>
     <br>
     <input type="submit" value="Передать">
@@ -24,7 +24,6 @@ if (!empty($_GET["user_name"]) && !empty($_GET["age"]))
 }
 
 ?>
-
 </p></div>
 
 
