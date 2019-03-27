@@ -1,3 +1,9 @@
+<?php
+if (!isset($_GET['user_name'],$_GET['age'])) {
+    $_GET['user_name'] = '';
+    $_GET['age'] = '';
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,8 +19,10 @@
     <br>
     <br>
     <input type="submit" value="Передать">
+
 </form>
 <div class="main">
+
     <p>
         <?php
 
