@@ -5,7 +5,7 @@
     <title>Форма</title>
 </head>
 <body>
-<form method="get" action="index.php">
+<form method="post" action="index.php">
     Имя <input name="user_name" type="text" maxlength="25" size="20" value="<?= $_POST['user_name'] ?? null ?>"/>
     <br>
     <br>
@@ -20,15 +20,22 @@
         <?php
 
         if (!empty($_POST['user_name']) && !empty($_POST['age'])) {
-            echo "{$_POST['user_name']} {$_POST['age']}";
-            //$result = $_POST['user_name'] + $_POST['age'];
-            $file = fopen ("user.txt","a+b  ");
-            fwrite($file, "$_POST\n");
-            fclose($file);
+            echo "Привет, {$_POST['user_name']}! Тебе правда  {$_POST['age']} лет";
         }
+        $file = 'user.txt';
+        file_put_contents($file, serialize($_POST), FILE_APPEND);
 
         ?>
     </p>
+    <p>
+        <?php
+        $list = unserialize(file_get_contents($file));
+        echo $result = "{$list["user_name"]} {$list["age"]}"
+
+        ?>
+
+    </p>
+
 </div>
 </body>
 </html>
