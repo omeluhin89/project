@@ -30,10 +30,9 @@
     <p>
         <?php
         $list = unserialize(file_get_contents($file));
-        echo $result = "{$list["user_name"]} {$list["age"]}"
+        echo $result = "{$list["user_name"]} {$list["age"]}";
 
         ?>
-
     </p>
 
 </div>
