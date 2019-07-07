@@ -18,21 +18,15 @@
 <div class="main">
     <p>
         <?php
-
         if (!empty($_POST['user_name']) && !empty($_POST['age'])) {
             echo "Привет, {$_POST['user_name']}! Тебе правда  {$_POST['age']} лет";
+            $data = $_POST['user_name'] . ";" . $_POST["age"] . "\n";
+            $file = file_put_contents("user.txt",$data,FILE_APPEND);
+            var_dump($data);
         }
-        $file = 'user.txt';
-        file_put_contents($file, serialize($_POST), FILE_APPEND);
-
         ?>
     </p>
     <p>
-        <?php
-        $list = unserialize(file_get_contents($file));
-        echo $result = "{$list["user_name"]} {$list["age"]}";
-
-        ?>
     </p>
 
 </div>
