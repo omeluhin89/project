@@ -22,7 +22,7 @@
             echo "Привет, {$_POST['user_name']}! Тебе правда  {$_POST['age']} лет";
             $data = $_POST['user_name'] . ";" . $_POST["age"] . "\n";
             $file = file_put_contents("user.txt",$data,FILE_APPEND);
-            var_dump($data);
+            var_dump($data); //просто сделал, чтобы смотреть что в переменной
         }
         ?>
     </p>
