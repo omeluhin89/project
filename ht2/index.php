@@ -21,11 +21,12 @@
         if (!empty($_POST['user_name']) && !empty($_POST['age'])) {
             echo "Привет, {$_POST['user_name']}! Тебе правда  {$_POST['age']} лет";
             $data = $_POST['user_name'] . ";" . $_POST["age"] . "\n";
-            $file = file_put_contents("user.txt",$data,FILE_APPEND);
+            file_put_contents("user.txt",$data,FILE_APPEND);
             var_dump($data); //просто сделал, чтобы смотреть что в переменной
         }
         ?>
     </p>
+    <?=file_get_contents('user.txt')?>
     <p>
     </p>
 
