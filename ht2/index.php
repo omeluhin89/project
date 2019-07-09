@@ -21,12 +21,22 @@
         if (!empty($_POST['user_name']) && !empty($_POST['age'])) {
             echo "Привет, {$_POST['user_name']}! Тебе правда  {$_POST['age']} лет";
             $data = $_POST['user_name'] . ";" . $_POST["age"] . "\n";
-            file_put_contents("user.txt",$data,FILE_APPEND);
-            var_dump($data); //просто сделал, чтобы смотреть что в переменной
+            file_put_contents("user.txt", $data, FILE_APPEND);
         }
         ?>
     </p>
-    <?=file_get_contents('user.txt')?>
+    <? $text = file_get_contents('user.txt');
+    $mas = [];
+    $mas = explode("\n", $text);
+    foreach ($mas as $value) {
+        $mas2 = explode(';', $value);
+        if (strlen($mas2[0]) > 1) {    //пришлось сделать это дерьмо из-за того что в конце файла пустая строка и он пытается ее обработать
+
+            echo "$mas2[0], $mas2[1] лет";
+            echo "<br>";
+        }
+    }
+    ?>
     <p>
     </p>
 
