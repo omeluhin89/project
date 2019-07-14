@@ -31,7 +31,7 @@
         foreach ($usersDataList as $value) {
             $userData = explode(';', $value);
             if (strlen($userData[0]) > 1) {    //пришлось сделать это дерьмо из-за того что в конце файла пустая строка и он пытается ее обработать
-                echo "$mas2[0], $mas2[1] лет";
+                echo "$userData[0], $userData[1] лет";
                 echo "<br>";
             }
         }
