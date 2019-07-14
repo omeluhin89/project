@@ -25,18 +25,17 @@
         }
         ?>
     </p>
-    <? $text = file_get_contents('user.txt');
-    $mas = [];
-    $mas = explode("\n", $text);
-    foreach ($mas as $value) {
-        $mas2 = explode(';', $value);
-        if (strlen($mas2[0]) > 1) {    //пришлось сделать это дерьмо из-за того что в конце файла пустая строка и он пытается ее обработать
-
-            echo "$mas2[0], $mas2[1] лет";
-            echo "<br>";
+        <?php
+        $text = file_get_contents('user.txt');
+        $usersDataList = explode("\n", $text);
+        foreach ($usersDataList as $value) {
+            $userData = explode(';', $value);
+            if (strlen($userData[0]) > 1) {    //пришлось сделать это дерьмо из-за того что в конце файла пустая строка и он пытается ее обработать
+                echo "$mas2[0], $mas2[1] лет";
+                echo "<br>";
+            }
         }
-    }
-    ?>
+        ?>
     <p>
     </p>
 
