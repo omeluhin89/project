@@ -28,12 +28,10 @@
         <?php
         $text = file_get_contents('user.txt');
         $usersDataList = explode("\n", $text);
+        array_pop($usersDataList);
         foreach ($usersDataList as $value) {
-            $userData = explode(';', $value);
-            if (strlen($userData[0]) > 1) {    //пришлось сделать это дерьмо из-за того что в конце файла пустая строка и он пытается ее обработать
-                echo "$userData[0], $userData[1] лет";
-                echo "<br>";
-            }
+            list($userData["name"],$userData["age"]) = explode(';', $value);
+            echo "{$userData["name"]}, {$userData["age"]} лет<br>";
         }
         ?>
     <p>
