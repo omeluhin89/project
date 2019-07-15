@@ -15,7 +15,7 @@
     <input type="submit" value="Передать">
 
 </form>
-<div class="main">
+<div>
     <p>
         <?php
         if (!empty($_POST['user_name']) && !empty($_POST['age'])) {
@@ -25,18 +25,18 @@
         }
         ?>
     </p>
-        <?php
-        $text = file_get_contents('user.txt');
-        $usersDataList = explode("\n", $text);
-        array_pop($usersDataList);
-        foreach ($usersDataList as $value) {
-            list($userData["name"],$userData["age"]) = explode(';', $value);
-            echo "{$userData["name"]}, {$userData["age"]} лет<br>";
-        }
-        ?>
-    <p>
-    </p>
-
 </div>
+<div style="background: #cccccc; border: 2px solid black; border-radius: 9px; width: 150px;">
+<?php
+$text = file_get_contents('user.txt');
+$usersDataList = explode("\n", $text);
+array_pop($usersDataList);
+foreach ($usersDataList as $value) {
+    list($userData["name"],$userData["age"]) = explode(';', $value);
+    echo "{$userData["name"]}, {$userData["age"]} лет<br>";
+}
+?>
+</div>
+
 </body>
 </html>
