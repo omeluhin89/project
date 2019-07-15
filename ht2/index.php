@@ -32,8 +32,8 @@ $text = file_get_contents('user.txt');
 $usersDataList = explode("\n", $text);
 array_pop($usersDataList);
 foreach ($usersDataList as $value) {
-    list($userData["name"],$userData["age"]) = explode(';', $value);
-    echo "{$userData["name"]}, {$userData["age"]} лет<br>";
+    [$name, $age] = explode(';', $value);
+    echo "$name, $age лет<br>";
 }
 ?>
 </div>
