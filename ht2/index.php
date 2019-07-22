@@ -1,7 +1,10 @@
 <?php
 session_start();
 $_SESSION['user_id'] = 112233;
-
+if (!empty($_POST['user_name']) && !empty($_POST['age'])) {
+    $user_name = $_POST['user_name'];
+    $user_age = $_POST['age'];
+}
 
 ?>
 <!DOCTYPE html>
@@ -14,31 +17,28 @@ $_SESSION['user_id'] = 112233;
 <div>
     <p>
         <?php
-        $submit = '';
-        if ($_SESSION['user_id'] == 11223) {   //поставим тут 112233 и кнопка будет доступна
-            if (!empty($_POST['user_name']) && !empty($_POST['age'])) {
-                echo "Привет, {$_POST['user_name']}! Тебе правда  {$_POST['age']} лет";
-                $data = $_POST['user_name'] . ";" . $_POST["age"] . "\n";
-                file_put_contents("user.txt", $data, FILE_APPEND);
-            }
-        } else {
-            $submit = 'disabled';
+        $submit = 'disabled';
+        if (isset($_SESSION['user_id'])) {
+            $submit = '';
+        }
+        if (!empty($user_name) && !empty($user_age)) {
+            echo "Привет, $user_name! Тебе правда $user_age лет";
+            $data = $user_name . ";" . $user_age . "\n";
+            file_put_contents("user.txt", $data, FILE_APPEND);
         }
         ?>
     </p>
 </div>
 <form method="post" action="index.php">
-    Имя <input name="user_name" type="text" maxlength="25" size="20" value="<?= $_POST['user_name'] ?? null ?>"/>
+    Имя <input name="user_name" type="text" maxlength="25" size="20" value="<?=$user_name ?? null ?>"/>
     <br>
     <br>
-    Возраст <input name="age" type="text" maxlength="2" size="3" value="<?= $_POST['age'] ?? null ?>"/>
+    Возраст <input name="age" type="text" maxlength="2" size="3" value="<?=$user_age ?? null ?>"/>
     <br>
     <br>
-    <input type="submit" value="Передать" <?=$submit?>>
+    <input type="submit" value="Передать" <?=$submit ?>>
 </form>
-<p>
-
-</p>
+<p></p>
 <div style="background: #cccccc; border: 2px solid black; border-radius: 9px; width: 150px;">
     <?php
     $text = file_get_contents('user.txt');
@@ -50,6 +50,5 @@ $_SESSION['user_id'] = 112233;
     }
     ?>
 </div>
-
 </body>
 </html>
