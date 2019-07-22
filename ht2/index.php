@@ -15,21 +15,28 @@
     <input type="submit" value="Передать">
 
 </form>
-<div class="main">
+<div>
     <p>
         <?php
         if (!empty($_POST['user_name']) && !empty($_POST['age'])) {
             echo "Привет, {$_POST['user_name']}! Тебе правда  {$_POST['age']} лет";
             $data = $_POST['user_name'] . ";" . $_POST["age"] . "\n";
-            file_put_contents("user.txt",$data,FILE_APPEND);
-            var_dump($data); //просто сделал, чтобы смотреть что в переменной
+            file_put_contents("user.txt", $data, FILE_APPEND);
         }
         ?>
     </p>
-    <?=file_get_contents('user.txt')?>
-    <p>
-    </p>
-
 </div>
+<div style="background: #cccccc; border: 2px solid black; border-radius: 9px; width: 150px;">
+<?php
+$text = file_get_contents('user.txt');
+$usersDataList = explode("\n", $text);
+array_pop($usersDataList);
+foreach ($usersDataList as $value) {
+    [$name, $age] = explode(';', $value);
+    echo "$name, $age лет<br>";
+}
+?>
+</div>
+
 </body>
 </html>
